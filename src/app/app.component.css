@@ -1,0 +1,11 @@
+.main-content {
+  margin-left: 20px; /* margen por defecto cuando el sidebar está cerrado */
+  padding: 20px 0px 0px 0px;
+  transition: margin-left 0.3s ease; /* animación suave */
+}
+
+/* Cuando el sidebar está abierto */
+.main-content.sidebar-open {
+  margin-left: 210px; /* el ancho de tu sidebar */
+  
+}

@@ -1,0 +1,127 @@
+.menuHeader{
+  font-size: large; font-weight: bold; color: #8acaf5;
+}
+.sidebar {
+  width: 200px;
+  height: 100%;
+  background-color: #8acaf5;
+  color: #b1adad;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  transition: width 0.8s;
+  overflow: hidden;
+  /* display: none; */
+
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #444;
+  color: #b1adad;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: block;
+  color: #444;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0 0 0 0;
+  
+}
+
+.sidebar-menu ul li {
+  padding: 1rem;
+  /* line-height: 0.1; */
+}
+
+.sidebar-menu ul li a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-menu li a i {
+  margin-right: 1rem;
+}
+
+.sidebar-menu li:hover {
+  background-color: #aeb1ad;
+  color:#084b77 ;
+}
+
+.sidebar-menu.active {
+  /* display: none; */
+  display: block;
+}
+.sidebar.shifted{
+  margin-left: -300px;
+}
+.sidebar.hidden {
+  transform: translateX(-100%);
+}
+
+.liz1 {
+  padding: 5px;
+}
+.submenu .liz {
+  color: #444;
+  /* margin: 1px 1px 1px 1px; */
+  line-height: 0.1;
+    /* tighter spacing */
+  /* padding: 0px 0px 0px 19px; */
+  /* padding: 5px; */
+  /* margin: 5px; */
+  margin-left: -3px;
+  margin-right: -3px;
+}
+
+.arrow {
+  float: right;
+  transition: transform 0.2s ease;
+}
+
+.arrow.open {
+  transform: rotate(180deg);
+}
+
+.submenu a.router-link-active {
+  font-weight: bold;
+  border-radius: 4px;
+  
+}
+.submenu li:hover{
+  background-color: #3b627c;
+  /* color: #abadad; */
+  color: #fff;
+  font-weight: bold;
+  transform: scale(1.02);
+  transition: all 0.2s ease-in-out;
+}
+/* .submenu a:hover {
+  background: linear-gradient(to right, #ffb6c1, #ffc0cb);
+  color: #fff;
+  font-weight: bold;
+  transform: scale(1.02);
+  transition: all 0.2s ease-in-out;
+} */
+ .outlinesuccess{
+  background-color: #444;
+  border-color: #8acaf5;
+  color: #8acaf5;
+ }
+
+ .outlinesuccess:hover{
+  background-color: #8acaf5;
+  border-color: #444;
+  color: #444;
+ }

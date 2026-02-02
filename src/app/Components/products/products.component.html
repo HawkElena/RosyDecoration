@@ -1,0 +1,111 @@
+<div class="maincontent">
+     <h2>🌹 Rose Bouquets</h2>
+
+      <div class="search-filter">
+        <input type="text" placeholder="Search bouquets..." [(ngModel)]="searchTerm" />
+      </div>
+
+      <div class="size-options">
+        <button (click)="filterBySize('S')">Size S</button>
+        <button (click)="filterBySize('M')">Size M</button>
+        <button (click)="filterBySize('L')">Size L</button>
+      </div>
+
+       <!-- Example product card -->
+      <!-- <div class="product-list">
+
+        <div class="product-card" *ngFor="let bouquet of filteredBouquets">
+          <h4 style="font-size: larger; font-weight: bold; color: rgb(212, 43, 43);">{{ bouquet.name }}</h4>
+          <p>Size: {{ bouquet.size }}</p>
+          <p > Price: <span class="badge  rounded-pill" style="background-color: rgb(51, 122, 79); font-weight: bold; font-size: small;">{{ bouquet.price }}</span> </p>
+          <img [src]="bouquet.image" />
+          <button class="btn btn-outline-success" >Add to Cart</button>
+          <button class="btn btn-outline-danger" style="margin-left: 10px;">View Details</button>           
+        </div>
+      </div> -->
+
+      <!-- <div class="product-grid">
+        <div class="product-card" *ngFor="let bouquet of filteredBouquets">
+          <img [src]="bouquet.image" />
+          <h3>{{ bouquet.name }}</h3>
+          <p style="font-weight: bold;">Price: 
+              <span class="badge  rounded-pill"
+                    style="background-color: rgb(37, 143, 80); font-weight: bold; font-size: small;">{{ bouquet.price}}
+              </span>
+          </p>
+        </div>
+      </div> -->
+
+<div class="product-grid">
+  <div class="product-card" *ngFor="let product of filteredBouquets">
+    <img [src]="product.image" class="product-img" />
+
+    <h3 class="product-title">{{ product.name }}</h3>
+    <p class="product-price">{{ product.price}}</p>
+
+    <div class="product-actions">
+      <button class="btn-description" (click)="openModal(product)">
+        Ver descripcións
+      </button>
+
+      <button class="btn-cart" (click)="addToCart(product)">
+        Agregar al carrito
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal-backdrop" *ngIf="selectedProduct">
+  <div class="modal-content premium-modal">
+
+    <!-- Header del producto -->
+    <h2 class="modal-title">{{ selectedProduct.name }}</h2>
+
+    <!-- Imagen con zoom -->
+<div 
+  class="zoom-container"
+  [class.zoomed]="zoomed"
+  (mousedown)="startPan($event)"
+  (mousemove)="panImage($event)"
+  (mouseup)="endPan()"
+  (mouseleave)="endPan()"
+  (click)="toggleZoom()"
+>
+  <img 
+    [src]="selectedProduct.image" 
+    class="modal-img"
+    [style.transform]="transform"
+  />
+</div>
+
+
+    <!-- Cantidad -->
+    <div class="pquantity">
+      <button class="qty-btn" (click)="qty(selectedProduct, 'less')">−</button>
+
+      <input 
+        type="number" 
+        [(ngModel)]="selectedProduct.quantity"
+        class="qty-input"
+        min="1"
+      />
+
+      <button class="qty-btn" (click)="qty(selectedProduct, 'plus')">+</button>
+    </div>
+
+    <!-- Descripción -->
+    <p class="modal-description">
+      {{ selectedProduct.description }}
+    </p>
+
+    <!-- Botón agregar al carrito -->
+    <!-- <button class="btn-cart"> 🏷️ Cotizar este producto </button> -->
+    <button class="btn-cart"> <i class="fa-solid fa-tag"></i> Cotizar este producto </button>
+    <!-- Botón cerrar -->
+    <button class="btn-close" (click)="closeModal()">Cerrar</button>
+
+  </div>
+</div>
+
+</div>
