@@ -1,14 +1,38 @@
 <div class="content-wrapper">
-  <!-- Your content here -->
 
-  <app-sidebar  #sidebar></app-sidebar>
-  <div class="main-content" [class.sidebar-open]="!sidebar.isSidebarOpen">
-    <div class="content-area">
-      <div>
-        <button *ngIf="sidebar.isSidebarOpen" (click)="toggleSidebar()" class="btn btn-outline-danger"> <i
-            class="fas fa-bars"></i> </button>
+  <app-sidebar></app-sidebar>
+
+  <div class="main-content" [class.sidebar-open]="isSidebarOpen">
+    <div class="content-area" [class.modal-open]="isModalOpen">
+
+      <button (click)="toggleSidebar()" class="menu-button btn btn-outline-danger" [class.hidden]="isSidebarOpen">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="banner-wrapper" [class.banner-shift]="isSidebarOpen" *ngIf="!isModalOpen">
+        <header class="banner-header" [class.header-shifted]="isSidebarOpen">
+          <!-- CENTER: title -->
+          <div class="logo-section" >
+            <h1 class="shop-name">Decoraciones Elena</h1>
+            <p class="shop-description">Tu tienda de decoración floral en línea</p>
+          </div>
+          <!-- RIGHT: cart -->
+          <!-- <div class="cart-icon" (click)="goToCart();"> -->
+            <div class="cart-icon" routerLink="/cart">
+          
+            <i class="fa fa-shopping-cart">
+            </i>
+            <span class="badge" *ngIf="cartCount>0">{{cartCount}}</span>
+          </div>
+      
+        </header>
       </div>
- 
-    <router-outlet></router-outlet>
+
+      <!-- AQUÍ VAN LAS PÁGINAS -->
+      <router-outlet></router-outlet>
+
+    </div>
   </div>
+
 </div>
+

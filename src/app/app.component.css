@@ -1,11 +1,200 @@
 .main-content {
-  margin-left: 20px; /* margen por defecto cuando el sidebar está cerrado */
+  padding-top: var(--banner-height);
+  /* margen por defecto cuando el sidebar está cerrado */
+  /* margin-left: 20px;  */
   padding: 20px 0px 0px 0px;
   transition: margin-left 0.3s ease; /* animación suave */
 }
 
 /* Cuando el sidebar está abierto */
 .main-content.sidebar-open {
-  margin-left: 210px; /* el ancho de tu sidebar */
+  margin-left: -5px; /* el ancho de tu sidebar */
   
+}
+
+.menu-button {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 20000; 
+  /* MÁS ALTO QUE EL BANNER */
+  background-color: #ff5c8d;
+  border-color: #fff;
+  color: #fff;
+}
+.menu-button:hover {
+  background-color: #fff;
+  border-color: #ff5c8d;
+  color: #ff5c8d;
+  border-radius: 8px;   
+}
+
+.hidden {
+  display: none;
+}
+/* aqui empieza el css del header banner */
+
+.banner-wrapper {
+  position: fixed;
+  top: 0;
+  left: 12px;
+  width: 100%;
+  z-index: 20;
+  padding: 10px; /* Aquí controlas que no ocupe todo el ancho */
+  /* height: 50px; */
+  height: var(--banner-height);
+  margin-left: -12px; /* Compensa el padding para que el fondo llegue al borde */
+  margin-top: -5px; /* Compensa el padding para que el fondo llegue al borde */
+  pointer-events: none !important;
+  /* background: rgba(0, 255, 0, 0.3) !important;  */
+  /* solo para visualizar el área del banner */
+}
+
+.banner-wrapper.banner-shift {
+  left: 257px;
+  /* ancho del sidebar */
+}
+
+.banner-header {
+  display: flex;
+  justify-content: center; /* Centrado horizontal */
+  align-items: center;     /* Centrado vertical */
+  background: linear-gradient(to right, #fce4ec, #f8bbd0);
+  border-radius: 12px; /* Opcional: se ve más premium */
+  padding: 0px 20px;
+  position: relative;
+  font-family: 'Playfair Display', serif;
+  color: #4e4e4e;
+  z-index: 10;
+  pointer-events: auto;
+
+}
+.banner-header.header-shifted{
+   margin-right: 242px;
+}
+
+.logo-section {
+  /* display: flex; */
+  /* flex-direction: column; */
+  flex: 1;
+  /* takes available space */
+  text-align: center;
+  /* centers the text */
+  /* pointer-events: none; */
+  pointer-events: auto; /* allows clicks on the logo and text*/
+  /* prevents accidental clicks */
+  /* height: 50px; */
+}
+
+.logo-section h1,
+.logo-section p {
+  margin: 0;
+  line-height: 1.2;
+  /* top: 5px; */
+}
+
+.shop-name {
+  font-size: 30px;
+  font-weight: bold;
+  display: block;
+}
+.shop-description {
+
+  margin-top: -25px;
+  /* ajusta como quieras */
+}
+
+
+.cart-icon {
+  position: relative;
+  margin-top: 30px;
+  margin-left: auto;
+  font-size: 1.8rem;
+  color: #ff4d88;
+  cursor: pointer;
+  display: inline-flex;
+  /* ← LA CLAVE */
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+  transform: translateY(-50%);
+  pointer-events: auto;
+
+}
+.badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: #ff4d88;
+  color: white;
+  border-radius: 50%;
+  padding: 3px 7px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.shop-name {
+  font-size: 30px;
+  font-weight: bold;
+  display: block;
+}
+.shop-description {
+  margin-top: -25px;
+  /* ajusta como quieras */
+}
+.cart-bubble {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background-color: #f06292;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+
+
+
+/* cuando la resolucion es mas pequeña de 350*/
+@media (max-width: 588px) {
+
+  /* Banner más pequeño */
+  .banner-wrapper {
+    height: 70px !important;
+  }
+
+  .banner-header {
+    padding: 5px 10px !important;
+    flex-direction: column;
+    text-align: center;
+    height: 60px !important;
+  }
+
+  .shop-name {
+    font-size: 25px !important;
+  }
+
+  .shop-description {
+    font-size: 14px !important;
+    margin-top: 0px !important;
+  }
+
+  .cart-icon {
+    margin-top: -35px !important;
+    /* transform: none !important; */
+  }
+
+  /* El contenido baja más */
+  /* .maincontent {
+    padding-top: 70px !important;
+  } */
+  
+  .content-area.modal-open {
+    pointer-events: none !important;
+    opacity: 1;
+    z-index: 1 !important;
+  }
+
+
 }

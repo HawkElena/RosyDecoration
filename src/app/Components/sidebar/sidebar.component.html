@@ -1,54 +1,36 @@
-<div class="sidebar" [class.shifted]="isSidebarOpen">
+<div class="sidebar" [class.shifted]="!isSidebarOpen">
   <div class="sidebar-header">
-    <!-- <h1>Hawk-Market</h1> -->
-    <Label class="menuHeader" >Menu</Label>
-    <!-- <button class="btn btn-outline-success" (click)="toggleSidebar()">☰</button> -->
-    <button (click)="toggleSidebar()" class="btn btn-outline-success outlinesuccess"> <i class="fas fa-bars"></i> </button>
-
+    <Label class="menuHeader">Menu</Label>
+    <button (click)="toggleSidebar()" class="btn btn-outline-success outlinesuccess">
+      <i class="fas fa-bars"></i>
+    </button>
   </div>
-  <ul class="sidebar-menu" >
 
-    <li class="liz1">
-      <a routerLink="/home">
-        <i class="fas fa-tachometer-alt"></i> Dashboard
-      </a>
-    </li>
-    <li class="liz1">
-      <a routerLink="/about">
-        <i class="fas fa-cash-register"></i> POS
-      </a>
-    </li>
-    <li class="liz1">
-      <a routerLink="/contact">
-        <i class="fas fa-boxes-stacked"></i> Inventory
-      </a>
-    </li>
-    <li class="liz1">
-      <a routerLink="/contact">
-        <i class="fas fa-receipt"></i> Orders
-      </a>
-    </li>
-    <li class="liz1">
-      <a routerLink="/contact">
-        <i class="fas fa-truck-loading"></i> Load Orders
-      </a>
-    </li>
-    <li class="liz1">
-      <a routerLink="/contact">
-        <i class="fas fa-sliders-h"></i> Adjustments
-      </a>
-    </li>
+  <ul class="sidebar-menu">
+
     <li class="liz1">
       <a (click)="toggleCatalog()">
         <i class="fas fa-book-open"></i> Catalogs
         <i class="fas fa-chevron-down arrow" [class.open]="catalogOpen"></i>
       </a>
-    
+
       <ul class="submenu" *ngIf="catalogOpen">
-        <li class="liz"><a routerLink="/catalog/roses">🌹 Rose Bouquets</a></li>
-        <li class="liz"><a routerLink="/catalog/chocolates">🍫 Chocolates</a></li>
-        <li class="liz"><a routerLink="/catalog/bears">🧸 Bears with Candy</a></li>
-        <li class="liz"><a routerLink="/catalog/seasonal">⭐ Seasonal Gifts</a></li>
+
+        <!-- CATALOGO GENERAL -->
+        <li class="liz" routerLinkActive="active-li">
+          <a routerLink="/products" class="menu-item">🌹 Valentine Day</a>
+        </li>
+
+        <!-- HOME -->
+        <li class="liz" routerLinkActive="active-li">
+          <a routerLink="/home" class="menu-item">  Mother's Day</a>
+        </li>
+
+        <!-- "Cart" -->
+        <li class="liz" routerLinkActive="active-li">
+          <a routerLink="/cart" class="menu-item">  Cart</a>
+        </li>
+
       </ul>
     </li>
 

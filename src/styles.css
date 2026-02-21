@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --banner-height: 60px; /* misma altura que el banner */
+}
 .container {
   display: flex;
   height: 100vh;
@@ -16,4 +19,14 @@
 }
 .sidebar.active ~ .content {
   margin-left: 0;
+}
+
+body.modal-open .banner-wrapper,
+body.modal-open .banner-header,
+body.modal-open .menu-button,
+body.modal-open .cart-icon {
+  z-index: 1 !important;
+  pointer-events: auto !important;
+  opacity: 1 !important;
+  /* optional */
 }

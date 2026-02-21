@@ -1,1 +1,95 @@
-<p>cart works!</p>
+<div class="checkout-container">
+
+  <h2>Checkout</h2>
+
+  <!-- Resumen del pedido -->
+<div class="order-summary">
+  <h3>Tu pedido</h3>
+
+  @for (item of cartItems; track $index) {
+    <div class="summary-item">
+
+      <!-- Thumbnail -->
+      <img 
+        [src]="item.url" 
+        alt="{{ item.name }}" 
+        class="item-thumb"
+      />
+
+      <!-- Name + price -->
+      <div class="item-info">
+        <span class="item-name">{{ item.name }}</span>
+        <span class="item-price">${{ item.price }}</span>
+      </div>
+
+      <!-- quantity -->
+      <div class="item-info">
+        <span class="item-name">-</span>
+        <span class="item-name">{{ item.instock}} unidades</span>
+        <span class="item-name">+</span>
+        
+      </div>
+
+
+      <!-- Delete button -->
+      <button class="delete-btn" (click)="removeItem(item)">
+        <i class="fa fa-trash"></i>
+      </button>
+
+
+    </div>
+    <div class="item-actions">
+    
+      <!-- Si qty = 1 → mostrar DELETE -->
+      @if (item.qty === 1) {
+      <button class="delete-btn" (click)="removeItem(item)">
+        <i class="fa fa-trash"></i>
+      </button>
+      }
+    
+      <!-- Si qty > 1 → mostrar botones – y + -->
+      @if (item.qty === 1) {
+      <div class="qty-controls">
+        <button (click)="decreaseQty(item)">−</button>
+        <span>{{ item.qty }}</span>
+        <button (click)="increaseQty(item)">+</button>
+      </div>
+      }
+    
+    </div>
+
+  }
+
+  <div class="summary-total">
+    <strong>Total:</strong>
+    <strong>${{ total }}</strong>
+  </div>
+</div>
+
+
+  <!-- Formulario del cliente -->
+  <form [formGroup]="checkoutForm" (ngSubmit)="submitOrder()">
+
+    <label>Nombre completo</label>
+    <input type="text" formControlName="name">
+
+    <label>Teléfono</label>
+    <input type="text" formControlName="phone">
+
+    <label>Dirección</label>
+    <textarea formControlName="address"></textarea>
+
+    <label>Método de pago</label>
+    <select formControlName="paymentMethod">
+      <option value="">Selecciona uno</option>
+      <option value="card">Tarjeta (Stripe)</option>
+      <option value="paypal">PayPal</option>
+    </select>
+
+    <button type="submit" class="pay-btn">
+      Proceder al pago
+    </button>
+
+  </form>
+
+</div>
